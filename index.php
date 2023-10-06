@@ -3,12 +3,15 @@
 
 	$action = new LoginAction();
 	$data = $action->execute();
+	$pageName = "index.php";
 
 	require_once("partial/header.php");
 ?> 
 
-		<form action="" mlogin.phpethod="post">
+<h1>WELCOME TO Hello kitty world </h1>
 
+
+		<form action="" index.php method="post">
 
 			<div class="form-label">
 				<label for="username">Nom d'usager : </label>
@@ -31,5 +34,6 @@
 			</div>
 			<div class="form-input">
 				<button type="submit">Connexion</button>
-                <?php
+               
+<?php
 	require_once("partial/footer.php");

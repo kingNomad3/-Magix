@@ -1,8 +1,6 @@
 <?php
-/**
- * data = array('key1' => 'value1', 'key2' => 'value2');
- */
-session_start();
+	session_start();
+	require_once("action/constants.php");
 
 	abstract class CommonAction {
 		protected static $VISIBILITY_ADMIN = 3;
@@ -34,7 +32,7 @@ session_start();
 			return $this->executeAction();
 		}
 		
-		abstract protected function executeAction();
+		
 		
 		public function getUsername() {
 			return $_SESSION["username"];
@@ -54,6 +52,9 @@ session_start();
 			return $pageURL;
 		}
 
+		/**
+ 		* data = array('key1' => 'value1', 'key2' => 'value2');
+		*/
         public function callAPI($service, array $data) {
             $apiURL = "https://magix.apps-de-cours.com/api/" . $service;
     
@@ -74,6 +75,7 @@ session_start();
             
         return json_decode($result);
         }
+		protected abstract function executeAction();
 	}
 
    
