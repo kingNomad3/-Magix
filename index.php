@@ -3,7 +3,7 @@
 
 	$action = new LoginAction();
 	$data = $action->execute();
-	$pageName = "index.php";
+	// $pageName = "index.php";
 
 	require_once("partial/header.php");
 ?> 
@@ -18,6 +18,7 @@
 			</div>
 			<div class="form-input">
 				<input type="text" name="username" id="username" />
+			
 			</div>
 			<div class="form-separator"></div>
 

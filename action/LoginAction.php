@@ -9,20 +9,29 @@
         }
 
         protected function executeAction() {
-            $data = [];
-            $data["username"] = "Kingnomad";
-            $data["password"] = "Ella199845";
+
+            if (isset($_POST{"username"})){
+                $data = [];
+                $data["username"] = $_POST["username"];
+                $data["password"] = $_POST["pwd"];
+
+            
 
             $result = parent::callAPI("signin", $data);
 
+
             if ($result == "INVALID_USERNAME_PASSWORD") {
-                // err
+                // err 
+                print("error");
+                // var_dump($result);exit;
             }
             else {
                 // Pour voir les informations retournées : 
                     // var_dump($result);exit;
+
                 $key = $result->key;
             }
+        }
                     return [];
                 }
 
