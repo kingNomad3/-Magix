@@ -8,7 +8,11 @@
         }
 
         protected function executeAction() {
-            $result = sha1($_POST["quelconque"]);
+            $data = [];
+            $data["type"] = $_POST["type"];
+            $data["key"] = $_SESSION["key"];
+            $result = parent::callAPI($_POST["callType"], $data);
+
 
             return compact("result");
         }
