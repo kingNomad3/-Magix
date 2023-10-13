@@ -12,7 +12,7 @@
                 $data = [];
                 $data["key"] = $_SESSION["key"];
                 $result = parent::callAPI("signout", $data);
-
+                
                 if($result == "INVALID_KEY") 
                     var_dump("INVALID_KEY");
                 else {

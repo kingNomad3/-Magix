@@ -1,6 +1,9 @@
-</div>
-			<div class="form-separator"></div>
+	</div>
+	</form>
+	</div>
 		</form>
+		</div>
+		</div>
 	</div>
 </body>
 </html>

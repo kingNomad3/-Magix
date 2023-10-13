@@ -1,0 +1,120 @@
+/* global.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFD1D9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #FF69B4; /* Using the Hello Kitty hot pink for the title */
+}
+
+/* You can uncomment and modify this based on your actual sprite/game rendering */
+/* 
+#game {
+    width: 150px;
+    height: 150px;
+    background-image: url('path_to_your_sprite_image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 2rem;
+}
+*/
+
+.form-label,
+.form-input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+form {
+    background-color: #FFF;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #FF69B4;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem; /* Added a margin to give space between button and canvas */
+}
+
+button:hover {
+    background-color: #FF1493;
+}
+
+
+.canvas-container {
+    position: relative; 
+    width: 1536px; /* match the width of your canvas */
+    height: 707px; /* match the height of your canvas */
+}
+
+.full-canvas {
+    display: block; /* block ensures it takes full width of its parent */
+}
+
+form {
+    position: absolute; /* This makes the form sit over the canvas */
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the form on the canvas */
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 100%;
+}
+canvas {
+    background: #FFD1D9;  /* Soft pink background to match the Hello Kitty theme */
+}
+
+.canvas-container {
+    position: relative;
+    width: 1536px; /* Set the width to match your canvas width */
+    height: 707px; /* Set the height to match your canvas height */
+}
+
+.full-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
