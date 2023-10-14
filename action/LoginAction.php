@@ -26,10 +26,20 @@
                 // var_dump($result);exit;
             }
             else {
+                    // Debugging statement:
+                    echo "Attempting to redirect to lobby.php";
+                   
+
+                    $key = $result->key;
+                    $_SESSION["key"] = $key;
+                    $_SESSION["username"] = $_POST["username"];
+                    $_SESSION["visibility"] = CommonAction::$VISIBILITY_MEMBER;
+                    header("location:lobby.php");
+                    exit;
                 // Pour voir les informations retournées : 
                     // var_dump($result);exit;
 
-                $key = $result->key;
+                // $key = $result->key;
             }
         }
                     return [];

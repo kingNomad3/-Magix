@@ -1,0 +1,68 @@
+/* Basic Page Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe4e1;  /* Soft Pink Background */
+    color: #444;   /* Darker text for contrast */
+}
+
+h1, h2, h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    border-bottom: 3px solid #ff91a4; /* Pinkish Border */
+    padding-bottom: 10px;
+}
+
+h4 {
+    color: #ff91a4;  /* Pinkish Color */
+}
+
+h2 {
+    font-size: 2em;
+    color: #ff6699;  /* Bright Pink */
+}
+
+/* Action Buttons and Links */
+.action-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spacing between items */
+    margin-top: 30px;
+}
+
+.action-href, .action-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;   /* Removing underline for links */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.action-href:hover, .action-button:hover {
+    background-color: #ff6699;  /* Bright Pink on Hover */
+    color: white;
+}
+
+/* Chat Container Styles */
+.chat-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.chat-box {
+    border: 3px solid #ff91a4; /* Pinkish Border */
+    border-radius: 10px;
+    overflow: hidden; /* To ensure no scrollbar is visible around the iframe */
+}
+
+/* In case you have images or other assets, you can add classes like these: 
+.hello-kitty-logo {
+    width: 150px;
+    height: 150px;
+    background-image: url('path_to_your_hello_kitty_image.png');
+    background-size

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.speed = Math.random() * 3 + 2;
             this.opacity = Math.random() * 0.5 + 0.5;
         
-            console.log(`Resetting sparkle to: x=${this.x}, y=${this.y}, size=${this.size}, opacity=${this.opacity}`);
+            // console.log(`Resetting sparkle to: x=${this.x}, y=${this.y}, size=${this.size}, opacity=${this.opacity}`);
         }
 
         update() {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
     }
 
-    console.log(`Updating sparkle at (${this.x}, ${this.y}) with size ${this.size} and opacity ${this.opacity}`);
+    // console.log(`Updating sparkle at (${this.x}, ${this.y}) with size ${this.size} and opacity ${this.opacity}`);
 
     
     animate();

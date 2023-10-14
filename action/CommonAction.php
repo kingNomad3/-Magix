@@ -1,7 +1,9 @@
 <?php
 	session_start();
 	require_once("action/constants.php");
-
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 	abstract class CommonAction {
 		protected static $VISIBILITY_ADMIN = 3;
 		protected static $VISIBILITY_MODERATEUR = 2;
@@ -24,14 +26,13 @@
 		
 			if ($this->visibility > CommonAction::$VISIBILITY_PUBLIC) {
 				if (!isset($_SESSION["visibility"]) || $_SESSION["visibility"] < $this->visibility) {
-					header("location:login.php");
+					header("location:index.php");
 					exit;
 				}
 			}
 			
 			return $this->executeAction();
 		}
-		
 		
 		
 		public function getUsername() {
