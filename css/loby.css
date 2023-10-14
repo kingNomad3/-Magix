@@ -60,9 +60,39 @@ h2 {
     overflow: hidden; /* To ensure no scrollbar is visible around the iframe */
 }
 
-/* In case you have images or other assets, you can add classes like these: 
-.hello-kitty-logo {
-    width: 150px;
-    height: 150px;
-    background-image: url('path_to_your_hello_kitty_image.png');
-    background-size
+
+.action-href, .action-button {
+    padding: 12px 30px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 25px;  /* Making it more rounded for a cute look */
+    text-decoration: none;   /* Removing underline for links */
+    background-color: #ff6699;  /* Bright Pink */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Adds a little depth to the button */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;  /* Smoothens hover effect */
+}
+
+.action-href:hover, .action-button:hover {
+    transform: translateY(-2px);  /* Gives a slight "lift" effect on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  /* Slightly more pronounced shadow on hover */
+}
+
+/* Special styling for the LEAVE button */
+.quit-button {
+    position: absolute;  /* Takes it out of the normal flow */
+    top: 20px;  /* 20px from the top */
+    right: 20px;  /* 20px from the right */
+    background-color: #ff3333;  /* A more "warning" color since it's the quit/leave button */
+}
+
+.quit-button:hover {
+    background-color: #e60000;  /* Darken the red color on hover */
+}
+#kittyheart {
+    width: 300px;  /* adjust as needed */
+    height: 300px; /* adjust as needed */
+    background-color: #f0e0d6; /* a temporary light beige background to check its presence */
+    position: relative; /* to position inner elements absolutely */
+    margin: 20px auto; /* center the div */
+}

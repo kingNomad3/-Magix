@@ -4,7 +4,7 @@ const applyStyles = iframe => {
 		backgroundColor : "rgba(87, 41, 5, 0.2)",
 		fontGoogleName : "Sofia",
 		fontSize : "20px",
-		hideIcons : false (or ,true),
+		hideIcons : false ,
 		inputBackgroundColor : "red",
 		inputFontColor : "blue",
 		height : "700px",
@@ -16,6 +16,7 @@ const applyStyles = iframe => {
 		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
 }, 100);
 }
+
 
 
 const chooseGame = (type, callType) => {

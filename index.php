@@ -10,7 +10,7 @@
 
 
 <h1>WELCOME TO Hello kitty world </h1>
-
+<link rel="stylesheet" href="css/index.css">
 
 <div class="canvas-container">
     
@@ -21,7 +21,6 @@
 <script src="js/TiledImage.js"></script>
 <script src="js/global.js"></script>
 <script src="js/index.js"></script>
-<script src="js/sprites/kitty.js"></script>
 
 <script src="js/sprites/Sparkles.js"></script>
 

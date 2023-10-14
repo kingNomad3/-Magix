@@ -1,4 +1,5 @@
-class kitty2 {
+
+   class heartkitty {
     constructor() {
         let columnCount = 10; 
         let rowCount = 1;
@@ -12,6 +13,7 @@ class kitty2 {
         let node = document.createElement("div"); 
         document.querySelector("#kittyheart").append(node); 
         
+        
         this.tiledImage = new TiledImage("images/heartkitty.png", columnCount, rowCount, refreshDelay, loopColumns, this.scale, node);
         this.tiledImage.setFlipped(true);
         
@@ -19,7 +21,8 @@ class kitty2 {
     }
 
     tick() {
-     
+        alert("heartkitty.js loaded!");
+        console.log("Function XYZ started.");
         this.tiledImage.tick(getX(this.x), getY(this.y) - this.tiledImage.getActualHeight()/2, ctx);
         return true;
     }
