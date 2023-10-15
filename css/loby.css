@@ -1,4 +1,4 @@
-/* Basic Page Styles */
+Basic Page Styles
 body {
     font-family: 'Arial', sans-serif;
     background-color: #ffe4e1;  /* Soft Pink Background */
@@ -60,6 +60,12 @@ h2 {
     overflow: hidden; /* To ensure no scrollbar is visible around the iframe */
 }
 
+iframe {
+    border: none;       /* Removes any borders */
+    overflow: hidden;   /* Ensures no scrollbars appear */
+}
+
+
 
 .action-href, .action-button {
     padding: 12px 30px;
@@ -96,3 +102,4 @@ h2 {
     position: relative; /* to position inner elements absolutely */
     margin: 20px auto; /* center the div */
 }
+

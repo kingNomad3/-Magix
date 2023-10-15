@@ -17,9 +17,7 @@
 <script src="js/sprites/heartkitty.js"></script>
 
 </div>
-<script>
-    alert("Inline script executed!");
-</script>
+
 <script src="js/javacsript.js"></script>
 <h4>WELCOME, LITTLE KITTEN</h4>
 <h1>This is where you can talk to other kitties</h1>
