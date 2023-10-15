@@ -14,7 +14,6 @@
 <div class="canvas-container">
 <script src="js/javacsript.js"></script>
 <script src="js/sprites/heartkitty.js"></script>
-
 </div>
 
 <script src="js/javacsript.js"></script>

@@ -11,10 +11,20 @@ const applyStyles = iframe => {
 		memberListFontColor : "#ff00dd",
 		memberListBackgroundColor : "white"
 	}
-
+	
 	setTimeout(() => {
 		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
 }, 100);
+}
+
+const carte = () =>{
+	
+	let node = document.createElement("div"); 
+	document.querySelector("#hand").append(node); 
+
+	node.push
+	// data.hand pour prendre la carte voir fruit help 
+
 }
 
 
@@ -45,4 +55,3 @@ const chooseGame = (type, callType) => {
 		}
 	})
 }
-
