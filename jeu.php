@@ -1,5 +1,5 @@
 <?php
-    require_once("action/GameAction.php");
+    require_once("action/JeuAction.php");
 
     $action = new jeuAction();
     $data = $action->execute();
@@ -8,9 +8,9 @@
 
     require_once("partial/header.php");
 ?>
-
+<link rel="stylesheet" href="css/game.css">
 <script defer src="js/game.js"></script>
-
+<!-- <link rel="stylesheet" href="css/index.css"> -->
 <div class="chat-container">
     <div class="chat-box">
         <iframe class="chat-box" style="width:700px;height:330px;border:0"  onload="applyStyles(this)"
@@ -67,7 +67,7 @@
     </div>
     <div class="player-credentials">
         <div class="spacer"></div>
-        <div class="player-name"><?= $data["username"] ?></div>   
+        <div class="player-name"></div>   
         <div class="player-pic"></div>
         <div class="player-class"></div>
         <div class="spacer"></div>
