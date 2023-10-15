@@ -1,0 +1,84 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* prevent scrollbars */
+}
+
+
+a {
+    color: #FF69B4; /* Pink color for links */
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #FF69B4;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #FF69B4;
+    color: white;
+}
+
+.deck-div {
+    background-image: url('path_to_your_hello_kitty_background_image.png'); /* Replace with your Hello Kitty background image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 15px #FF69B4; /* Pink shadow around the div */
+}
+
+h1 {
+    color: #FF69B4;
+    border-bottom: 3px solid #FF69B4;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.deck-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFD1D9; /* Soft pink background to match the Hello Kitty theme */
+    color: #FF69B4; /* Pink color for the title */
+    text-align: center;
+    padding: 10px 0;
+    z-index: 2; /* make sure it's above the iframe */
+}
+iframe {
+    border: none;
+    width: 100%;
+    height: calc(100% - 130px); /* adjusting for space occupied by title and button */
+    position: absolute;
+    top: 130px; /* adjusting top position to accommodate the title and button */
+    left: 0;
+    z-index: 1;
+}
+.lobby-button {
+    position: fixed;
+    top: 50px; /* place it below the title */
+    left: 10px; /* Add space from the left */
+    z-index: 2; /* so that it appears above the iframe but below the title */
+    /* ... other styles remain unchanged */
+}
+
+.lobby-button:hover {
+    background-color: #FF69B4; /* Pink background on hover */
+    color: #FFF; /* White text on hover */
+    border: 2px solid #FFD1D9; /* Soft pink border on hover */
+}
+
+
+.deck-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFD1D9;
+    color: #FF69B4;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 2;
+}
