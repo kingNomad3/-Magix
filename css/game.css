@@ -85,15 +85,19 @@ body {
 
 
 .toggle-chat {
-    top: 40%; /
+    margin-top: 350px;
+
+    top: 40%; 
 }
 
 .toggle-action {
     top: 50%; 
+    margin-top: 350px;
 }
 
 .basic-action {
     top: 60%; 
+    margin-top: 350px;
 }
 
 
@@ -104,6 +108,7 @@ body {
 .chat-container {
     position: absolute;
     top: 18%;
-    left: 29%;
+    left: 0; /* initial state is visible */
     transition: left 0.5s; /* smooth transition */
+    width: 700px; /* width of your chatbox */
 }

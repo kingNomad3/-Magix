@@ -17,10 +17,10 @@ setTimeout(state, 1000); // Appel initial (attendre 1 seconde)
 function toggleChat() {
     var chatBox = document.querySelector('.chat-container'); 
 
-    
-    if(chatBox.style.left !== "-30%") {
-        chatBox.style.left = "-30%"; 
+    // If chat is visible, slide it out
+    if(chatBox.style.left !== "-700px") { // assuming chat-box width is 700px
+        chatBox.style.left = "-700px"; 
     } else {
-        chatBox.style.left = "29%"; 
+        chatBox.style.left = "0"; // slide back in
     }
 }

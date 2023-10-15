@@ -12,20 +12,13 @@
 <script defer src="js/game.js"></script>
 <!-- <link rel="stylesheet" href="css/index.css"> -->
 <div class="chat-container">
-    <div class="chat-box">
         <iframe class="chat-box" style="width:700px;height:330px;border:0"  onload="applyStyles(this)"
                 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>"> 
         </iframe>
-    </div>
 </div>
 
-<div onclick="toggleChat()" class="toggle-chat">            
-    chat-box
-</div>
-
-<div onclick="toggleActions()" class="toggle-action">
-    Actions
-</div>
+<div onclick="toggleChat()" class="toggle-chat">chat-box</div>
+<div onclick="toggleActions()" class="toggle-action">Actions</div>
 
 <div class="latestAction">
 </div>
