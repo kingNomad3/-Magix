@@ -8,11 +8,11 @@
 
     require_once("partial/header.php");
 ?>
-<link rel="stylesheet" href="css/game.css">
+<!-- <link rel="stylesheet" href="css/game.css"> -->
 <script defer src="js/game.js"></script>
 <!-- <link rel="stylesheet" href="css/index.css"> -->
 <div class="chat-container">
-        <iframe class="chat-box" style="width:700px;height:330px;border:0"  onload="applyStyles(this)"
+        <iframe class="chat-box" style="width:700px;height:330px;border:0" 
                 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>"> 
         </iframe>
 </div>

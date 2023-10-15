@@ -17,7 +17,6 @@
 <iframe src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>" width="100%" height="100%" scrolling="no"></iframe>
 
 </div>
-
 <?php
     require_once("partial/footer.php");
 ?>

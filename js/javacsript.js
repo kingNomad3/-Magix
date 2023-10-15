@@ -11,7 +11,7 @@ const applyStyles = iframe => {
 		memberListFontColor : "#ff00dd",
 		memberListBackgroundColor : "white"
 	}
-	
+
 	setTimeout(() => {
 		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
 }, 100);
@@ -45,3 +45,4 @@ const chooseGame = (type, callType) => {
 		}
 	})
 }
+

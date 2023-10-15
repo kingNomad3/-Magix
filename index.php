@@ -19,7 +19,6 @@
 </div>
 
 <script src="js/TiledImage.js"></script>
-<script src="js/global.js"></script>
 <script src="js/index.js"></script>
 
 <script src="js/sprites/Sparkles.js"></script>

@@ -1,5 +1,4 @@
-
-   class heartkitty {
+class heartkitty {
     constructor() {
         let columnCount = 10; 
         let rowCount = 1;

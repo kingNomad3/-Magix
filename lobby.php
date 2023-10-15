@@ -3,16 +3,15 @@
 
     $action = new LobbyAction();
     $data = $action->execute();
-    $pageName = "lobby.php";
+    // $pageName = "lobby.php";
 
     require_once("partial/header.php");
 ?>
 
-    <link rel="stylesheet" href="css/loby.css">
+<link rel="stylesheet" href="css/loby.css">
 
 
 <div class="canvas-container">
-<script src="js/global.js"></script>
 <script src="js/javacsript.js"></script>
 <script src="js/sprites/heartkitty.js"></script>
 
@@ -36,7 +35,7 @@
 
 <div class="chat-container">
     <div class="chat-box">
-        <iframe class="chat-box" style="width:700px;height:330px;border:0"  onload="applyStyles(this)"
+        <iframe class="chat-box" style="width:700px;height:330px;border:0" 
                 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>"> 
         </iframe>
     </div>

@@ -25,6 +25,7 @@
                     // var_dump($result);exit;
                 }
                 else {
+                    //pour ce connecter
                     $key = $result->key;
                     $_SESSION["key"] = $key;
                     $_SESSION["username"] = $_POST["username"];
