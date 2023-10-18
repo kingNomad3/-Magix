@@ -8,7 +8,7 @@
 
     require_once("partial/header.php");
 ?>
-<!-- <link rel="stylesheet" href="css/game.css"> -->
+<link rel="stylesheet" href="css/game.css">
 <script defer src="js/game.js"></script>
 <!-- <link rel="stylesheet" href="css/index.css"> -->
 <div class="chat-container">
@@ -23,6 +23,8 @@
 <div class="latestAction">
 </div>
 
+<h1><?=  $_SESSION["username"] ?> VS </h1>
+<!-- <?= $_SESSION["opponentUsername"] ?> -->
 <div class="errorMessage"></div>
 
 <div id="opponent-side">

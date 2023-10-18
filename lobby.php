@@ -13,14 +13,17 @@
 
 <div class="canvas-container">
 <script src="js/javacsript.js"></script>
-<script src="js/sprites/heartkitty.js"></script>
+<script src="js/sprites/kitty2.js"></script>
+
 </div>
 
-<script src="js/javacsript.js"></script>
 <h4>WELCOME, LITTLE KITTEN</h4>
-<h1>This is where you can talk to other kitties</h1>
-<!-- <h2><?= $data["username"] ?></h2> -->
+<h1>hey, <?=  $_SESSION["username"] ?> this is where you can talk to other kitties</h1>
 
+
+<div class="canvas-container">
+    <canvas id="kittyheart" data-full="true" class="full-canvas" width="1536" height="707"></canvas>
+</div>
 <div class="action-box">
     <a class="action-href" href="deck.php" class="deck-button">DECK</a>
     <button class="action-button" onclick="chooseGame('TRAINING', 'games/auto-match')">

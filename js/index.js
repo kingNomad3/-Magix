@@ -9,7 +9,9 @@
 window.addEventListener("load", () => {
 	
 	// spriteList.push(new Kitty());
+	spriteList.push(new kitty2());
     spriteList.push(new heartkitty());
+	
 	document.querySelector(".login-container").onclick = () => {
 		document.querySelector(".login-container").style.opacity = 1;
 	}
