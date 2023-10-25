@@ -4,16 +4,19 @@ const state = () => {
 	})
 .then(response => response.json())
 .then(data => {
-	// console.log(data); // contient les cartes/état du jeu.
+	console.log(data); // contient les cartes/état du jeu.
     // console.log(data.opponent.username);
 
-    let opponentUsername;
-    opponentUsername = data.opponent.username
-    // $_SESSION["opponentUsername"] = console.log();
-    console.log(opponentUsername);
+    // Update the content of the div with the ID 'dataOutput'
+    const outputOpName = document.getElementById("usernameOp");
+    const outputOphand = document.getElementById("opponent-hand");
+    // outputElement.textContent = JSON.stringify(data, null, 2); // This displays the whole JSON
     
-    // 
-  
+    // If you want to display only a specific part of the data:
+    outputOpName.textContent = data.opponent.username;
+    outputOphand.textContent = data.hand;
+
+    
 
 	setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
 	})

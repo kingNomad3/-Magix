@@ -1,4 +1,4 @@
-class Kitty {
+class heartkitty {
 	constructor() {
 		let columnCount = 4;
 		let rowCount = 4;
@@ -11,6 +11,7 @@ class Kitty {
 
 		let node = document.createElement("div");
 		document.querySelector("#canvas").append(node);
+		console.log("test2")
 
 		this.tiledImage = new TiledImage("images/heartkitty.png", columnCount, rowCount, refreshDelay, loopColumns, this.scale, null);
 
@@ -28,6 +29,7 @@ class Kitty {
 		}
 
 		this.tiledImage.tick(getX(this.x), getY(this.y) - this.tiledImage.getActualHeight()/2, ctx);
+		console.log("is passing");
 
 		return this.opacity > 0.1;
 	}

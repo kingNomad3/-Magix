@@ -11,11 +11,18 @@
 <link rel="stylesheet" href="css/game.css">
 <script defer src="js/game.js"></script>
 <!-- <link rel="stylesheet" href="css/index.css"> -->
+
+<h1><?=  $_SESSION["username"] ?> VS <h1 id=usernameOp></h1> </h1>
+<!-- <?= $_SESSION["opponentUsername"] ?> -->
+<div class="errorMessage"></div>
+
 <div class="chat-container">
         <iframe class="chat-box" style="width:700px;height:330px;border:0" 
                 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>"> 
         </iframe>
 </div>
+
+
 
 <div onclick="toggleChat()" class="toggle-chat">chat-box</div>
 <div onclick="toggleActions()" class="toggle-action">Actions</div>
@@ -23,9 +30,7 @@
 <div class="latestAction">
 </div>
 
-<h1><?=  $_SESSION["username"] ?> VS </h1>
-<!-- <?= $_SESSION["opponentUsername"] ?> -->
-<div class="errorMessage"></div>
+
 
 <div id="opponent-side">
     <div class="remainingTurnTime">
@@ -36,7 +41,6 @@
         </div>
     </div>  
     <div class="opponent-hand">
-
     </div>
     <div class="opponent-info">
         <div class="opponent-health"></div>

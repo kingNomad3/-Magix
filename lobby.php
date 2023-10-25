@@ -12,7 +12,9 @@
 
 
 <div class="canvas-container">
+<script src="js/global.js"></script>
 <script src="js/javacsript.js"></script>
+<script src="js/index.js"></script>
 <script src="js/sprites/kitty2.js"></script>
 
 </div>
