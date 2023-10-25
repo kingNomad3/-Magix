@@ -4,17 +4,16 @@ const state = () => {
 	})
 .then(response => response.json())
 .then(data => {
-	console.log(data); // contient les cartes/état du jeu.
+	// console.log(data); // contient les cartes/état du jeu.
     // console.log(data.opponent.username);
 
     // Update the content of the div with the ID 'dataOutput'
     const outputOpName = document.getElementById("usernameOp");
-    const outputOphand = document.getElementById("opponent-hand");
-    // outputElement.textContent = JSON.stringify(data, null, 2); // This displays the whole JSON
+    const outputOphand = document.getElementById("opponent-info");
     
     // If you want to display only a specific part of the data:
     outputOpName.textContent = data.opponent.username;
-    outputOphand.textContent = data.hand;
+    outputOphand.textContent = data;
 
     
 
