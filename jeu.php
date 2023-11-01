@@ -8,7 +8,7 @@
 
     require_once("partial/header.php");
 ?>
-<!-- <link rel="stylesheet" href="css/game.css"> -->
+<link rel="stylesheet" href="css/game.css">
 <script defer src="js/game.js"></script>
 <!-- <link rel="stylesheet" href="css/index.css"> -->
 
