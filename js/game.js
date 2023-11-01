@@ -144,3 +144,13 @@ const toggleActions = () => {
         node.style.display = "none";
 }
 
+function toggleChat() {
+    var chatBox = document.querySelector('.chat-container'); 
+
+    // If chat is visible, slide it out
+    if(chatBox.style.left !== "-700px") { 
+        chatBox.style.left = "-1000px"; 
+    } else {
+        chatBox.style.left = "0"; // slide back in
+    }
+}
