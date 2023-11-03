@@ -36,7 +36,7 @@ const getY = percent => {
 const tick = () => {
 	mainTickCounter++;
 	if (ctx != null) ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    console.log("test")
+    console.log("tick global")
 	for (let i = 0; i < spriteList.length; i++) {
 		const sprite = spriteList[i];
 

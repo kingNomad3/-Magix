@@ -16,6 +16,8 @@
 <script src="js/javacsript.js"></script>
 <script src="js/index.js"></script>
 <script src="js/sprites/kitty2.js"></script>
+<script src="js/TiledImage.js"></script>
+
 
 </div>
 
@@ -24,7 +26,7 @@
 
 
 <div class="canvas-container">
-    <canvas id="kittyheart" data-full="true" class="full-canvas" width="1536" height="707"></canvas>
+    <canvas id="canvas" data-full="true" class="full-canvas" width="1536" height="707"></canvas>
 </div>
 <div class="action-box">
     <a class="action-href" href="deck.php" class="deck-button">DECK</a>
