@@ -347,8 +347,6 @@ body {
     border-radius: 5px;
     font-size: large;
     padding: 5px 20px;
-    background-color: rgba(165, 75, 41, 1);
-    color: rgba(24, 24, 17, 0.9);
     position: absolute;
     text-align: center;
     margin: auto;
@@ -358,7 +356,7 @@ body {
 }
 
 .toggle-action {
-    top: 42%;
+    top: 40%;
 }
 
 .errorMessage {
