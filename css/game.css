@@ -312,13 +312,13 @@ body {
     box-shadow: 2px 4px 10px rgba(31, 31, 25, 0.9);
     cursor: pointer;
     background-color: #FFB6C1; /* Light pink background */
-    color: #FFF4F9; /
+    color: #FFF4F9; 
 }
 
 .toggle-action:hover, .toggle-chat:hover, .basic-action:hover {
     background-color: rgba(24, 24, 17, 0.9);
     background-color: #FFB6C1; /* Light pink background */
-    color: #FFF4F9; /
+    color: #FFF4F9; 
 }
 
 .surrender {

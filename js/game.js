@@ -191,7 +191,7 @@ const setCardInZone = (zone, query, mp) => {
         iconParent.className = "icon-parent";
         mechParent.className = "mech-parent";
         
-        cardNode.style.backgroundImage = "url('./image/cards/carte" + zone[card].id + ".png')";
+        cardNode.style.backgroundImage = "url('./images/DeckCards/carte" + zone[card].id + ".png')";
 
         hpNode.append(hp);
         atkNode.append(atk);
