@@ -11,6 +11,7 @@ class heartkitty {
 
         let node = document.createElement("div"); 
         document.querySelector("#canvas").append(node); 
+        
 
         this.tiledImage = new TiledImage("images/heartkitty.png", columnCount, rowCount, refreshDelay, loopColumns, this.scale, node);
         this.tiledImage.setFlipped(true);
@@ -24,3 +25,4 @@ class heartkitty {
         return true;
     }
 }
+

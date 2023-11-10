@@ -1,4 +1,3 @@
-
 window.addEventListener("load", () => {
 	
 	
@@ -17,4 +16,3 @@ window.addEventListener('online', function(e) {
 window.addEventListener('offline', function(e) {
     document.querySelector("#offline-msg").style.display = "block";
 }, false);
-

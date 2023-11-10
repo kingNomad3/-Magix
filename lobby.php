@@ -32,21 +32,21 @@
     <a class="action-href" href="logout.php" class="quit-button">LEAVE</a>
 </div>
 
-<div class="chat-container">
-    <div class="chat-box">
+
+
+
+<div class="content-container">
+    <div class="canvas-container">
+         <canvas id="canvas" data-full="true" class="full-canvas" width="1536" height="707"></canvas>
+    </div>
+    <div class="chat-container">
         <iframe class="chat-box" style="width:700px;height:330px;border:0" 
                 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>"> 
         </iframe>
     </div>
-</div>
-
-
-<div id="kittyheart">
- 
-</div>
-
-<div class="canvas-container">
-    <canvas id="canvas" data-full="true" class="full-canvas" width="1536" height="707"></canvas>
+    <div class="canvas-container">
+         <canvas id="canvas-right" data-full="true" class="full-canvas" width="1536" height="707"></canvas>
+    </div>
 </div>
 
 <?php
