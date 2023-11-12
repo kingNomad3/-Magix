@@ -6,7 +6,7 @@ const state = () => {
 .then(data => {
     switch(data) {
         case "WAITING":
-            showErrorMessage(data);
+            showErrorMessage("la partie n'a pas encore commencé");
             break;
         case "LAST_GAME_WON":
             showErrorMessage(data);
@@ -145,23 +145,37 @@ const toggleActions = () => {
 }
 
 function toggleChat() {
-    var chatBox = document.querySelector('.chat-container'); 
-    
-    console.log(chatBox.style.left);
-    if(chatBox.style.left !== "-700px") { 
-        chatBox.style.left = "-1000px"; 
-    } else {
-        chatBox.style.left = "0"; // slide back in
-        console.log(chatBox.style.left);
-    }
-    console.log(chatBox.style.left);
-}
+    var chatBox = document.querySelector('.chat-container');
 
+    // Get the computed style for the left property
+    var computedLeft = window.getComputedStyle(chatBox).left;
+
+    // Check the computed style value
+    if (computedLeft !== "-700px") {
+        chatBox.style.left = "-700px";
+    } else {
+        chatBox.style.left = "100px";
+    }
+    console.log('Final left:', chatBox.style.left);
+}
+const cardImages = [
+    "./images/DeckCards/carte1.png",
+    "./images/DeckCards/carte3.png",
+    "./images/DeckCards/carte4.png",
+    "./images/DeckCards/carte5.png",
+    "./images/DeckCards/carte6.png",
+    "./images/DeckCards/carte7.png",
+    // ... add paths for the remaining 10 images
+    "./images/DeckCards/carte12.png"
+];
 const setCardInZone = (zone, query, mp) => {
     let handNode = document.querySelector(query);
     handNode.innerHTML = "";
-
-    for (let card in zone) {
+    
+    const numberOfCardsToShow = Math.min(12, Object.keys(zone).length);
+    for (let card in zone) {  
+    for (let i = 0; i < numberOfCardsToShow; i++) {
+        let card = Object.keys(zone)[i];
         let cardNode = document.createElement("div");
         let numberNode = document.createElement("div");
         let hpNode = document.createElement("div");
@@ -191,7 +205,11 @@ const setCardInZone = (zone, query, mp) => {
         iconParent.className = "icon-parent";
         mechParent.className = "mech-parent";
         
-        cardNode.style.backgroundImage = "url('./images/DeckCards/carte" + zone[card].id + ".png')";
+      
+            let imageIndex = parseInt(card.replace("card", ""), 10) - 1;
+            cardNode.style.backgroundImage = "url('" + cardImages[imageIndex] + "')";
+        
+
 
         hpNode.append(hp);
         atkNode.append(atk);
@@ -308,6 +326,7 @@ const setCardInZone = (zone, query, mp) => {
     
         handNode.append(cardNode);
     }
+}
 }
 
 const setInfoSide = (opponent, playerClass) => {
