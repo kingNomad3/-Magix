@@ -1,29 +1,31 @@
 const state = () => {
-	fetch("ajax-state.php", {   // Il faut créer cette page et son contrôleur appelle 
- method : "POST"        // l’API (games/state)
+
+	fetch("ajax-state.php", {   
+ method : "POST"       
 	})
 .then(response => response.json())
 .then(data => {
+    console.log(data)
     switch(data) {
         case "WAITING":
             showErrorMessage("la partie n'a pas encore commencé");
             break;
         case "LAST_GAME_WON":
-            showErrorMessage(data);
+            showErrorMessage("Vous avez gagner");
             break;
         case "LAST_GAME_LOST":
-            showErrorMessage(data);
+            showErrorMessage("Vous avez perdu");
             break;
         default:
             setCardInZone(data.board, ".player-board");
             setCardInZone(data.hand, ".player-hand", data["mp"]);
-            setCardInZone(data["opponent"]["board"], ".opponent-board");
-            showLatestAction(data["latestActions"]);
-            setOpponentInfo(data["opponent"]);
-            setPicTurn(data["yourTurn"]);
-            setPlayerInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
-            setTurnTime(data["remainingTurnTime"]);
-            setInfoSide(data["opponent"], data["heroClass"]);
+            // setCardInZone(data["opponent"]["board"], ".opponent-board");
+            // showLatestAction(data["latestActions"]);
+            // setOpponentInfo(data["opponentUsername"]);
+            // setPicTurn(data["yourTurn"]);
+            // setPlayerInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
+            // setTurnTime(data["remainingTurnTime"]);
+            // setInfoSide(data["opponent"], data["heroClass"]);
     }
     
 
@@ -60,56 +62,35 @@ const actionGame = (type, callType) => {
     })
 }
 
-const actionCard = () => {
-    let formData = new FormData();
 
-	formData.append("type", type);
-    formData.append("uid", uid);
-    formData.append("targetuid", targetuid);
 
-    fetch("ajax-action.php", {
-        method : "POST",
-        body : formData
-})
-.then(response => response.json())
-.then(data => {
-    switch(data) {
-        case "INVALID_KEY":
-        case "INVALID_ACTION":
-        case "ACTION_IS_NOT_AN_OBJECT":
-        case "NOT_ENOUGH_ENERGY":
-        case "BOARD_IS_FULL":
-        case "CARD_NOT_IN_HAND":
-        case "CARD_IS_SLEEPING":
-        case "MUST_ATTACK_TAUNT_FIRST":
-        case "OPPONENT_CARD_NOT_FOUND":
-        case "OPPONENT_CARD_HAS_STEALTH":
-        case "CARD_NOT_FOUND":
-        case "ERROR_PROCESSING_ACTION":
-        case "INTERNAL_ACTION_ERROR":
-        case "HERO_POWER_ALREADY_USED":
-            showErrorMessage(data);
-            break;
-        default:
-            updateState(data);
-    }
-})
-}
-const updateState = (data) => {
-    if(data["yourTurn"]) {
-        setCardInZone(data.board, ".player-board");
-        setCardInZone(data.hand, ".player-hand", data["mp"]);
-        setCardInZone(data["opponent"]["board"], ".opponent-board");
-        showLatestAction(data["latestActions"]);
-        setOpponentInfo(data["opponent"]);
-        setPicTurn(data["yourTurn"]);
-        setPlayerInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
-        setTurnTime(data["remainingTurnTime"]);
-        setInfoSide(data["opponent"], data["heroClass"]);
-        uid = null;
-        targetuid = null;
-    }
-}
+// const setOpponentInfo = (infos) => {
+   
+    
+//     // Les cartes dans sa main
+//     let handNode = document.querySelector(".opponent-hand");
+//     handNode.innerHTML = "";
+
+//     for (let i = 0; i < infos["handSize"]; i++) {
+//         let cardNode = document.createElement("div");
+//         cardNode.className = "oCardNode";
+//         handNode.append(cardNode);
+//     }
+
+//     // Les infos vitales
+//     let healthNode = document.querySelector(".opponent-health");
+//     let deckNode = document.querySelector(".opponent-deck");
+//     let heroMpNode = document.querySelector(".opponent-mp");
+
+//     healthNode.innerHTML = "";
+//     deckNode.innerHTML = "";
+//     heroMpNode.innerHTML = "";
+
+//     healthNode.append(infos["hp"]);
+//     deckNode.append(infos["remainingCardsCount"]);
+//     heroMpNode.append(infos["mp"]);
+// }
+
 
 const addCardDB = (id_card, player) => {
     let formData = new FormData();
@@ -172,10 +153,10 @@ const setCardInZone = (zone, query, mp) => {
     let handNode = document.querySelector(query);
     handNode.innerHTML = "";
     
-    const numberOfCardsToShow = Math.min(12, Object.keys(zone).length);
+  
     for (let card in zone) {  
-    for (let i = 0; i < numberOfCardsToShow; i++) {
-        let card = Object.keys(zone)[i];
+    
+        // let card = Object.keys(zone)[i];
         let cardNode = document.createElement("div");
         let numberNode = document.createElement("div");
         let hpNode = document.createElement("div");
@@ -205,9 +186,9 @@ const setCardInZone = (zone, query, mp) => {
         iconParent.className = "icon-parent";
         mechParent.className = "mech-parent";
         
-      
-            let imageIndex = parseInt(card.replace("card", ""), 10) - 1;
-            cardNode.style.backgroundImage = "url('" + cardImages[imageIndex] + "')";
+        cardNode.style.backgroundImage = "url('./images/DeckCards/carte" + zone[card].id + ".png')";
+            // let imageIndex = parseInt(card.replace("card", ""), 10) - 1;
+            // cardNode.style.backgroundImage = "url('" + cardImages[imageIndex] + "')";
         
 
 
@@ -219,22 +200,22 @@ const setCardInZone = (zone, query, mp) => {
         numberNode.append(atkNode);
         numberNode.append(costNode);
 
-        if(zone[card].mechanics.includes("Charge")) {
-            iconNode1.style.backgroundImage = "url('./image/icons/fist.png')";
-            iconNode1.className = "icon-card";
-        }
+        // if(zone[card].mechanics.includes("Charge")) {
+        //     // iconNode1.style.backgroundImage = "url('./image/icons/fist.png')";
+        //     iconNode1.className = "icon-card";
+        // }
 
-        if (zone[card].mechanics.length > 0) {
-            if(zone[card].mechanics[0].includes("Deathrattle")) {
-                iconNode2.style.backgroundImage = "url('./image/icons/skull.png')";
-                iconNode2.className = "icon-card";
-            }
-        }
+        // if (zone[card].mechanics.length > 0) {
+        //     if(zone[card].mechanics[0].includes("Deathrattle")) {
+        //         // iconNode2.style.backgroundImage = "url('./image/icons/skull.png')";
+        //         iconNode2.className = "icon-card";
+        //     }
+        // }
             
-        if(zone[card].mechanics.includes("Taunt")) {
-            iconNode3.style.backgroundImage = "url('./image/icons/shield.png')";
-            iconNode3.className = "icon-card";
-        }
+        // if(zone[card].mechanics.includes("Taunt")) {
+        //     // iconNode3.style.backgroundImage = "url('./image/icons/shield.png')";
+        //     iconNode3.className = "icon-card";
+        // }
 
 
         if(query == ".player-hand") {
@@ -261,7 +242,8 @@ const setCardInZone = (zone, query, mp) => {
                 updateBoard = true;
                 uid = zone[card].uid;
                 type = "PLAY";
-                actionCard();
+                actionCard(type,uid);
+                console.log("click go ")
             }
         }
         else if (query == ".player-board") {
@@ -297,7 +279,7 @@ const setCardInZone = (zone, query, mp) => {
         }
         else if (query == ".opponent-board") {
             if(zone[card].mechanics.includes("Stealth")) {
-                cardNode.style.backgroundImage = "url('./image/icons/back.png')";
+                // cardNode.style.backgroundImage = "url('./image/icons/back.png')";
                 cardNode.style.opacity = "0.5"
             }
             else {
@@ -327,7 +309,7 @@ const setCardInZone = (zone, query, mp) => {
         handNode.append(cardNode);
     }
 }
-}
+
 
 const setInfoSide = (opponent, playerClass) => {
     let opponentNameNode = document.querySelector(".opponent-name");
@@ -349,66 +331,66 @@ const setInfoSide = (opponent, playerClass) => {
     opponentNameNode.append(opponent["username"]);
     opponentClassNode.append(opponent["heroClass"]);
     playerClassNode.append(playerClass);
-// }
+}
 
 
-const setOpponentInfo = (infos) => {
-    // 13.	welcomeText: "None shall pass"
+// const setOpponentInfo = (infos) => {
+   
     
-        // Les cartes dans sa main
-        let handNode = document.querySelector(".opponent-hand");
-        handNode.innerHTML = "";
+//         // Les cartes dans sa main
+//         let handNode = document.querySelector(".opponent-hand");
+//         handNode.innerHTML = "";
     
-        for (let i = 0; i < infos["handSize"]; i++) {
-            let cardNode = document.createElement("div");
-            cardNode.className = "oCardNode";
-            handNode.append(cardNode);
-        }
+//         for (let i = 0; i < infos["handSize"]; i++) {
+//             let cardNode = document.createElement("div");
+//             cardNode.className = "oCardNode";
+//             handNode.append(cardNode);
+//         }
     
-        // Les infos vitales
-        let healthNode = document.querySelector(".opponent-health");
-        let deckNode = document.querySelector(".opponent-deck");
-        let heroMpNode = document.querySelector(".opponent-mp");
+//         // Les infos vitales
+//         let healthNode = document.querySelector(".opponent-health");
+//         let deckNode = document.querySelector(".opponent-deck");
+//         let heroMpNode = document.querySelector(".opponent-mp");
     
-        healthNode.innerHTML = "";
-        deckNode.innerHTML = "";
-        heroMpNode.innerHTML = "";
+//         healthNode.innerHTML = "";
+//         deckNode.innerHTML = "";
+//         heroMpNode.innerHTML = "";
     
-        healthNode.append(infos["hp"]);
-        deckNode.append(infos["remainingCardsCount"]);
-        heroMpNode.append(infos["mp"]);
-    }
+//         healthNode.append(infos["hp"]);
+//         deckNode.append(infos["remainingCardsCount"]);
+//         heroMpNode.append(infos["mp"]);
+//     }
 
-    const setPicTurn = (turn) => {
-        let picNode = document.querySelector(".turn-pic");
+//     const setPicTurn = (turn) => {
+//         let picNode = document.querySelector(".turn-pic");
     
-        if(turn) {
-            // picNode.style.backgroundImage = "url('./image/cards/player.png')";
-        }
-        else {
-            // picNode.style.backgroundImage = "url('./image/cards/opponent.png')";
-        }
-    }
+//         if(turn) {
+//             // picNode.style.backgroundImage = "url('./image/cards/player.png')";
+//         }
+//         else {
+//             // picNode.style.backgroundImage = "url('./image/cards/opponent.png')";
+//         }
+//     }
     
-    const setTurnTime = (time) => {
-        let timeNode = document.querySelector(".time-node");
-        timeNode.innerHTML = "";
-        timeNode.append(time);
-    }
+//     const setTurnTime = (time) => {
+//         let timeNode = document.querySelector(".time-node");
+//         timeNode.innerHTML = "";
+//         timeNode.append(time);
+//     }
     
-    const setPlayerInfo = (heroMp, hp, deckCount, ) => {
-        let healthNode = document.querySelector(".player-health");
-        let deckNode = document.querySelector(".player-deck");
-        let heroMpNode = document.querySelector(".player-mp");
+//     const setPlayerInfo = (heroMp, hp, deckCount, ) => {
+//         let healthNode = document.querySelector(".player-health");
+//         let deckNode = document.querySelector(".player-deck");
+//         let heroMpNode = document.querySelector(".player-mp");
     
-        healthNode.innerHTML = "";
-        deckNode.innerHTML = "";
-        heroMpNode.innerHTML = "";
+//         healthNode.innerHTML = "";
+//         deckNode.innerHTML = "";
+//         heroMpNode.innerHTML = "";
     
-        healthNode.append(hp);
-        deckNode.append(deckCount);
-        heroMpNode.append(heroMp);
-    }
+//         healthNode.append(hp);
+//         deckNode.append(deckCount);
+//         heroMpNode.append(heroMp);
+//     }
     
     
 
@@ -434,6 +416,58 @@ window.addEventListener("load", () => {
             parentNode.append(newNode);
             console.log(data);    
         })
+    }
+})
+
+
+const updateState = (data) => {
+    if(data["yourTurn"]) {
+        setCardInZone(data.board, ".player-board");
+        setCardInZone(data.hand, ".player-hand", data["mp"]);
+        setCardInZone(data["opponent"]["board"], ".opponent-board");
+        showLatestAction(data["latestActions"]);
+        // setOpponentInfo(data["opponent"]);
+        // setPicTurn(data["yourTurn"]);
+        // setPlayerInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
+        // setTurnTime(data["remainingTurnTime"]);
+        // setInfoSide(data["opponent"], data["heroClass"]);
+        uid = null;
+        // targetuid = null;
+    }
+}
+
+const actionCard = (type,uid) => {
+    let formData = new FormData();
+
+	formData.append("type", type);
+    formData.append("uid", uid);
+    // formData.append("targetuid", targetuid);
+
+    fetch("ajax-action.php", {
+        method : "POST",
+        body : formData
+})
+.then(response => response.json())
+.then(data => {
+    switch(data) {
+        case "INVALID_KEY":
+        case "INVALID_ACTION":
+        case "ACTION_IS_NOT_AN_OBJECT":
+        case "NOT_ENOUGH_ENERGY":
+        case "BOARD_IS_FULL":
+        case "CARD_NOT_IN_HAND":
+        case "CARD_IS_SLEEPING":
+        case "MUST_ATTACK_TAUNT_FIRST":
+        case "OPPONENT_CARD_NOT_FOUND":
+        case "OPPONENT_CARD_HAS_STEALTH":
+        case "CARD_NOT_FOUND":
+        case "ERROR_PROCESSING_ACTION":
+        case "INTERNAL_ACTION_ERROR":
+        case "HERO_POWER_ALREADY_USED":
+            showErrorMessage(data);
+            break;
+        default:
+            updateState(data);
     }
 })
 }
