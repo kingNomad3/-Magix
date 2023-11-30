@@ -163,7 +163,7 @@ body {
 }
 
 .player-health, .opponent-health {
-    /* background-image: url("../image/icons/cardiogram.png"); */
+    background-image: url("../images/health.png");
     flex-direction: column;
     margin-right: 10px;
     color: rgba(0, 0, 0, 0.9);
@@ -171,12 +171,12 @@ body {
 }
 
 .player-deck, .opponent-deck {
-    /* background-image: url("../image/icons/deck.png"); */
+    background-image: url("../images/deck.png");
     flex-direction: column;
 }
 
 .player-mp, .opponent-mp {
-    /* background-image: url("../image/icons/flash.png"); */
+    background-image: url("../images/energy.png");
     width: 30px;
     height: 30px;
     display: flex;    
