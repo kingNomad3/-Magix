@@ -12,7 +12,7 @@
             $data["key"] = $_SESSION["key"];
             $data["type"] = $_POST["type"];
             $data["uid"] = $_POST["uid"];
-            // $data["targetuid"] = $_POST["targetuid"];
+            $data["targetuid"] = $_POST["targetuid"];
 
             $result = parent::callAPI("games/action", $data);
             

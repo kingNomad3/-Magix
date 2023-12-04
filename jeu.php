@@ -12,8 +12,7 @@
 <script defer src="js/game.js"></script>
 <!-- <link rel="stylesheet" href="css/index.css"> -->
 
-<h1><?=  $_SESSION["username"] ?> VS <h1 id=usernameOp></h1> </h1>
-<!-- <?= $_SESSION["opponentUsername"] ?> -->
+
 <div class="errorMessage"></div>
 
 <div class="chat-container">
@@ -66,7 +65,7 @@
     </div>
     <div class="player-credentials">
         <div class="spacer"></div>
-        <div class="player-name"></div>   
+        <div class="player-name"><?=  $_SESSION["username"] ?></div>   
         <div class="player-pic"></div>
         <div class="player-class"></div>
         <div class="spacer"></div>

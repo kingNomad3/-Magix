@@ -1,6 +1,6 @@
 
 let uid = null;
-let targetuid = null;
+let targetEnnemie = null;
 let type = null;
 let updateHand = true;
 let updateBoard = false;
@@ -69,7 +69,7 @@ const updateState = (data) => {
         setTurnTime(data["remainingTurnTime"]);
         setInfoSide(data["opponent"], data["heroClass"]);
         uid = null;
-        targetuid = null;
+        targetEnnemie = null;
     }
 }
     
@@ -102,7 +102,7 @@ const actionCard = (type,uid) => {
 
 	formData.append("type", type);
     formData.append("uid", uid);
-    formData.append("targetuid", targetuid);
+    formData.append("targetuid", targetEnnemie);
 
     fetch("ajax-action.php", {
         method : "POST",
@@ -362,7 +362,7 @@ const setCardInZone = (zone, query, mp) => {
             }
             
             cardNode.onclick = () => {
-                targetuid = zone[card].uid;
+                targetEnnemie = zone[card].uid;
                 type = "ATTACK";
                 updateBoard = true;
                 actionCard();
@@ -381,7 +381,7 @@ const setInfoSide = (opponent, playerClass) => {
     let playerClassNode = document.querySelector(".player-class");
 
     opponentPicNode.onclick = () => {
-        targetuid = 0;
+        targetEnnemie = 0;
         updateBoard = true;
         type = "ATTACK";
         actionCard();
