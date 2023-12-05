@@ -4,7 +4,6 @@ let targetEnnemie = null;
 let type = null;
 let updateHand = true;
 let updateBoard = false;
-// let firstUpdate = true;
 let carteSelectionne = null;
 let idDB = 0;
 
@@ -33,6 +32,7 @@ const state = () => {
             break;
         case "LAST_GAME_LOST":
             messageErreur("Vous avez perdu");
+               // location.href = "lobby.php";
             break;
         default:
             setCardBoard(data.board, ".player-board");
@@ -45,7 +45,7 @@ const state = () => {
             setInfo(data["opponent"], data["heroClass"]);
     }
     
-
+ 
     
 	setTimeout(state, 1000); 
 	})

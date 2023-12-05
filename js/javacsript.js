@@ -23,8 +23,7 @@ const carte = () =>{
 	document.querySelector("#hand").append(node); 
 
 	node.push
-	// data.hand pour prendre la carte voir fruit help 
-	// data.carte.push
+	
 	
 
 }
