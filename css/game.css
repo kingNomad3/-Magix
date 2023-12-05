@@ -387,13 +387,13 @@ body {
 
 .chat-container {
     position: absolute;
-    top: 18%;
-    left: 29%;
+    top: 55%;
+    left: 0%;
     display: none;
     z-index: 1;
 }
 
-
+/* 
 .opponent-hand {
     display: flex;
     justify-content: center;
@@ -404,7 +404,7 @@ body {
     border-radius: 10px;
     padding: 10px;
     margin-top: 5px;
-}
+} */
 
 
 .basic-action::before, .toggle-chat::before, .toggle-action::before {

@@ -84,13 +84,13 @@
     </div>
 
     <div class="action-button">
-        <div onclick="actionGame('SURRENDER', 'games/action')" class="basic-action surrender">
+        <div onclick="action('SURRENDER', 'games/action')" class="basic-action surrender">
             surrender
         </div>
         <div class="basic-action" id="heroPower">
             Hero Power
         </div>
-        <div onclick="actionGame('END_TURN', 'games/action')"  class="basic-action end-turn">
+        <div onclick="action('END_TURN', 'games/action')"  class="basic-action end-turn">
             End turn
         </div>
     </div>

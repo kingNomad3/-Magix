@@ -1,17 +1,17 @@
 
-let uid = null;
+let user = null;
 let targetEnnemie = null;
 let type = null;
 let updateHand = true;
 let updateBoard = false;
-let firstUpdate = true;
-let cardSelected = null;
+// let firstUpdate = true;
+let carteSelectionne = null;
 let idDB = 0;
 
-let heroPowerButton = document.getElementById("heroPower");
+let heroPower = document.getElementById("heroPower");
 
-heroPowerButton.onclick = () => {
-    actionGame('HERO_POWER', 'games/action')
+heroPower.onclick = () => {
+    action('HERO_POWER', 'games/action')
     updateBoard = true;
 }
 
@@ -26,24 +26,23 @@ const state = () => {
     console.log(data)
     switch(data) {
         case "WAITING":
-            showErrorMessage("la partie n'a pas encore commencé");
+            messageErreur("la partie n'a pas encore commencé");
             break;
         case "LAST_GAME_WON":
-            showErrorMessage("Vous avez gagner");
+            messageErreur("Vous avez gagner");
             break;
         case "LAST_GAME_LOST":
-            showErrorMessage("Vous avez perdu");
+            messageErreur("Vous avez perdu");
             break;
         default:
-            setCardInZone(data.board, ".player-board");
-            setCardInZone(data.hand, ".player-hand", data["mp"]);
-            setCardInZone(data["opponent"]["board"], ".opponent-board");
+            setCardBoard(data.board, ".player-board");
+            setCardBoard(data.hand, ".player-hand", data["mp"]);
+            setCardBoard(data["opponent"]["board"], ".opponent-board");
             showLatestAction(data["latestActions"]);
-            // setOpponentInfo(data["opponentUsername"]);
-            // setPicTurn(data["yourTurn"]);
-            setPlayerInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
-            setTurnTime(data["remainingTurnTime"]);
-            setInfoSide(data["opponent"], data["heroClass"]);
+           
+            setUserInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
+            setTemps(data["remainingTurnTime"]);
+            setInfo(data["opponent"], data["heroClass"]);
     }
     
 
@@ -59,22 +58,22 @@ window.addEventListener("load", () => {
 );
 const updateState = (data) => {
     if(data["yourTurn"]) {
-        setCardInZone(data.board, ".player-board");
-        setCardInZone(data.hand, ".player-hand", data["mp"]);
-        setCardInZone(data["opponent"]["board"], ".opponent-board");
+        setCardBoard(data.board, ".player-board");
+        setCardBoard(data.hand, ".player-hand", data["mp"]);
+        setCardBoard(data["opponent"]["board"], ".opponent-board");
         showLatestAction(data["latestActions"]);
         setOpponentInfo(data["opponent"]);
-        // setPicTurn(data["yourTurn"]);
-        setPlayerInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
-        setTurnTime(data["remainingTurnTime"]);
-        setInfoSide(data["opponent"], data["heroClass"]);
-        uid = null;
+        setPicTurn(data["yourTurn"]);
+        setUserInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
+        setTemps(data["remainingTurnTime"]);
+        setInfo(data["opponent"], data["heroClass"]);
+        user = null;
         targetEnnemie = null;
     }
 }
     
 
-const actionGame = (type, callType) => {
+const action = (type, callType) => {
 	let formData = new FormData();
 
 	formData.append("type", type);
@@ -89,7 +88,7 @@ const actionGame = (type, callType) => {
         console.log(data);
         switch(data) {
             case "WRONG_TURN":
-                showErrorMessage(data);
+                messageErreur(data);
                 break;
             default:
                 updateState(data);
@@ -97,11 +96,11 @@ const actionGame = (type, callType) => {
     })
 }
 
-const actionCard = (type,uid) => {
+const actionCarte = (type,user) => {
     let formData = new FormData();
 
 	formData.append("type", type);
-    formData.append("uid", uid);
+    formData.append("uid", user);
     formData.append("targetuid", targetEnnemie);
 
     fetch("ajax-action.php", {
@@ -125,7 +124,7 @@ const actionCard = (type,uid) => {
         case "ERROR_PROCESSING_ACTION":
         case "INTERNAL_ACTION_ERROR":
         case "HERO_POWER_ALREADY_USED":
-            showErrorMessage(data);
+            messageErreur(data);
             break;
         default:
             updateState(data);
@@ -183,7 +182,7 @@ const addCardDB = (id_card, player) => {
 //     })
 // }
 
-const showErrorMessage = (message) => {
+const messageErreur = (message) => {
     let node = document.getElementsByClassName("errorMessage")[0];
     node.innerHTML = message;
     node.style.display = "block";
@@ -194,9 +193,21 @@ const showErrorMessage = (message) => {
         if(message == "LAST_GAME_WON" || message  == "LAST_GAME_LOST") 
             location.href = "lobby.php";
 
-    }, 3000);
+    }, 2000);
 }
 
+
+const toggleChat = () => {
+    let node = document.getElementsByClassName("chat-container")[0];
+    if (node.style.display == "none"){ 
+        node.style.display = "block";
+        chatBox.style.top = "700px"; 
+    }
+    else{ 
+        node.style.display = "none";
+        chatBox.style.left = "0";
+    } 
+}
 
 const toggleActions = () => {
     let node = document.getElementsByClassName("latestAction")[0];
@@ -206,15 +217,7 @@ const toggleActions = () => {
         node.style.display = "none";
 }
 
-const toggleChat = () => {
-    let node = document.getElementsByClassName("chat-container")[0];
-    if (node.style.display == "none") 
-        node.style.display = "block";
-    else 
-        node.style.display = "none";
-}
-
-const setCardInZone = (zone, query, mp) => {
+const setCardBoard = (zone, query, mp) => {
     let handNode = document.querySelector(query);
     handNode.innerHTML = "";
     
@@ -303,9 +306,9 @@ const setCardInZone = (zone, query, mp) => {
 
             cardNode.onclick = () => {
                 updateBoard = true;
-                uid = zone[card].uid;
+                user = zone[card].uid;
                 type = "PLAY";
-                actionCard(type,uid);
+                actionCarte(type,user);
                 console.log("click go ")
             }
         }
@@ -313,7 +316,7 @@ const setCardInZone = (zone, query, mp) => {
             if (zone[card].state == "SLEEP")
                 cardNode.style.opacity = "0.5"
 
-            if (zone[card].uid == uid)
+            if (zone[card].uid == user)
                 cardNode.style.boxShadow = "0 0 5px 6px rgba(243, 190, 34, 1)";
 
             cardNode.append(mechNode);
@@ -332,10 +335,10 @@ const setCardInZone = (zone, query, mp) => {
 
             cardNode.onclick = () => {
                 if (zone[card].state == "SLEEP") {
-                    showErrorMessage("CARD_IS_SLEEPING");
+                    messageErreur("CARD_IS_SLEEPING");
                 }
                 else {
-                    uid = zone[card].uid;
+                    user = zone[card].uid;
                     cardNode.style.boxShadow = "0 0 5px 6px rgba(243, 190, 34, 1)";
                 }
             }
@@ -365,7 +368,7 @@ const setCardInZone = (zone, query, mp) => {
                 targetEnnemie = zone[card].uid;
                 type = "ATTACK";
                 updateBoard = true;
-                actionCard();
+                actionCarte();
             }
         }
     
@@ -374,7 +377,7 @@ const setCardInZone = (zone, query, mp) => {
 }
 
 
-const setInfoSide = (opponent, playerClass) => {
+const setInfo = (opponent, playerClass) => {
     let opponentNameNode = document.querySelector(".opponent-name");
     let opponentPicNode = document.querySelector(".opponent-pic");
     let opponentClassNode = document.querySelector(".opponent-class");
@@ -384,7 +387,7 @@ const setInfoSide = (opponent, playerClass) => {
         targetEnnemie = 0;
         updateBoard = true;
         type = "ATTACK";
-        actionCard();
+        actionCarte();
     }
 
     opponentNameNode.innerHTML = "";
@@ -425,32 +428,23 @@ const setOpponentInfo = (infos) => {
 
 
 
-const setPicTurn = (turn) => {
-    let picNode = document.querySelector(".turn-pic");
 
-    if(turn) {
-        picNode.style.backgroundImage = "url('./image/cards/player.png')";
-    }
-    else {
-        picNode.style.backgroundImage = "url('./image/cards/opponent.png')";
-    }
-}
-const setTurnTime = (time) => {
-    let timeNode = document.querySelector(".time-node");
-    timeNode.innerHTML = "";
-    timeNode.append(time);
+const setTemps = (time) => {
+    let tempsNode = document.querySelector(".time-node");
+    tempsNode.innerHTML = "";
+    tempsNode.append(time);
 }
 
-const setPlayerInfo = (heroMp, hp, deckCount, ) => {
-    let healthNode = document.querySelector(".player-health");
+const setUserInfo = (heroMp, hp, deckCount, ) => {
+    let vieNode = document.querySelector(".player-health");
     let deckNode = document.querySelector(".player-deck");
     let heroMpNode = document.querySelector(".player-mp");
 
-    healthNode.innerHTML = "";
+    vieNode.innerHTML = "";
     deckNode.innerHTML = "";
     heroMpNode.innerHTML = "";
 
-    healthNode.append(hp);
+    vieNode.append(hp);
     deckNode.append(deckCount);
     heroMpNode.append(heroMp);
 }
