@@ -1,4 +1,3 @@
-
 let user = null;
 let targetEnnemie = null;
 let type = null;
@@ -6,13 +5,25 @@ let updateHand = true;
 let updateBoard = false;
 let carteSelectionne = null;
 let idDB = 0;
-
+let heroPowerUse = false;
+let enoughEnergy = false;
+let isclick = false;
 let heroPower = document.getElementById("heroPower");
+let statCards = document.getElementById("stats-cards");
 
 heroPower.onclick = () => {
     action('HERO_POWER', 'games/action')
     updateBoard = true;
+    if(heroPower && enoughEnergy){
+        displayImage("images/HeroPower.jpg", "Heroaction");
+    }
 }
+
+// statCards.onclick = () => {
+//     isclick = true;
+//    getCards(isclick);
+  
+// }
 
 
 const state = () => {
@@ -50,17 +61,15 @@ const state = () => {
             setInfo(data["opponent"], data["heroClass"]);
     }
     
- 
-    
 	setTimeout(state, 1000); 
 	})
 
 }
 window.addEventListener("load", () => {
     setTimeout(state, 1000); 
-    }
-    
+    }  
 );
+
 const updateState = (data) => {
     if(data["yourTurn"]) {
         setCardBoard(data.board, ".player-board");
@@ -68,7 +77,7 @@ const updateState = (data) => {
         setCardBoard(data["opponent"]["board"], ".opponent-board");
         showLatestAction(data["latestActions"]);
         setOpponentInfo(data["opponent"]);
-        setPicTurn(data["yourTurn"]);
+        // setPicTurn(data["yourTurn"]);
         setUserInfo(data["mp"], data["hp"], data["remainingCardsCount"]);
         setTemps(data["remainingTurnTime"]);
         setInfo(data["opponent"], data["heroClass"]);
@@ -99,7 +108,6 @@ const applyStyles = iframe => {
 }, 100);
 }
 
-
 const action = (type, callType) => {
 	let formData = new FormData();
 
@@ -123,7 +131,7 @@ const action = (type, callType) => {
     })
 }
 
-const actionCarte = (type,user) => {
+const actionCarte = (type,user, carte_id) => {
     let formData = new FormData();
 
 	formData.append("type", type);
@@ -139,9 +147,10 @@ const actionCarte = (type,user) => {
     switch(data) {
         case "INVALID_KEY":
         case "INVALID_ACTION":
-            displayImage("images/DeckCards/carte2.png", "Invalid Action");
+            displayImage("images/téléchargement.jfif", "Invalid Action");
         case "ACTION_IS_NOT_AN_OBJECT":
         case "NOT_ENOUGH_ENERGY":
+                enoughEnergy = true
         case "BOARD_IS_FULL":
         case "CARD_NOT_IN_HAND":
         case "CARD_IS_SLEEPING":
@@ -153,10 +162,12 @@ const actionCarte = (type,user) => {
         case "INTERNAL_ACTION_ERROR":
         case "HERO_POWER_ALREADY_USED":
             messageErreur(data);
+            heroPowerUse = true
             break;
         default:
             updateState(data);
     }
+    addCardDB(carte_id,1)
 })
 }
 
@@ -179,6 +190,7 @@ function displayImage(imageSrc, altText) {
         modal.parentNode.removeChild(modal);
     }, 1000); 
 }
+
 const showLatestAction = (actions) => {
     let node = document.getElementsByClassName("latestAction")[0];
 
@@ -202,10 +214,9 @@ const showLatestAction = (actions) => {
     }
 }
 
-
-const addCardDB = (id_card, joueur) => {
+const addCardDB = (id_carte, joueur) => {
     let formData = new FormData();
-    formData.append("id_card", id_card);
+    formData.append("id_carte", id_carte);
     formData.append("joueur", joueur);
 
     fetch("ajax-data.php", {
@@ -214,10 +225,29 @@ const addCardDB = (id_card, joueur) => {
     })
 }
 
+const carteParJoeur = () => {
+    fetch("ajax-data.php", {
+        method: "post"
+    })
+}
 
+const getCards = (isclick)=>{
+    let formData = new FormData();
+    formData.append("isclick", isclick);
 
+    fetch("ajax-data.php", {
+        method: "post",
+        body: formData
+    })
 
+.then(response => response.json())
+.then(data => {
+    console.log(data)
+})
 
+}
+
+    
 
 const messageErreur = (message) => {
     let node = document.getElementsByClassName("errorMessage")[0];
@@ -257,11 +287,9 @@ const toggleActions = () => {
 const setCardBoard = (zone, query, mp) => {
     let handNode = document.querySelector(query);
     handNode.innerHTML = "";
-    
   
     for (let card in zone) {  
     
-       
         let cardNode = document.createElement("div");
         let numberNode = document.createElement("div");
         let hpNode = document.createElement("div");
@@ -293,8 +321,6 @@ const setCardBoard = (zone, query, mp) => {
         
         cardNode.style.backgroundImage = "url('./images/DeckCards/carte" + zone[card].id + ".png')";
            
-
-
         hpNode.append(hp);
         atkNode.append(atk);
         costNode.append(cost);
@@ -304,19 +330,16 @@ const setCardBoard = (zone, query, mp) => {
         numberNode.append(costNode);
 
         if(zone[card].mechanics.includes("Charge")) {
-            // iconNode1.style.backgroundImage = "url('./image/icons/fist.png')";
             iconNode1.className = "icon-card";
         }
 
         if (zone[card].mechanics.length > 0) {
             if(zone[card].mechanics[0].includes("Deathrattle")) {
-                // iconNode2.style.backgroundImage = "url('./image/icons/skull.png')";
                 iconNode2.className = "icon-card";
             }
         }
             
         if(zone[card].mechanics.includes("Taunt")) {
-            // iconNode3.style.backgroundImage = "url('./image/icons/shield.png')";
             iconNode3.className = "icon-card";
         }
 
@@ -344,9 +367,10 @@ const setCardBoard = (zone, query, mp) => {
             cardNode.onclick = () => {
                 updateBoard = true;
                 user = zone[card].uid;
+                card = zone[card].id;
                 type = "PLAY";
-                actionCarte(type,user);
-                console.log("click go ")
+                actionCarte(type,user,card);
+              
             }
         }
         else if (query == ".player-board") {
@@ -372,7 +396,8 @@ const setCardBoard = (zone, query, mp) => {
 
             cardNode.onclick = () => {
                 if (zone[card].state == "SLEEP") {
-                    messageErreur("CARD_IS_SLEEPING");
+                    // messageErreur("CARD_IS_SLEEPING");
+                    displayImage("images/hello-kitty-sleeping.gif", "CARD_IS_SLEEPING");
                 }
                 else {
                     user = zone[card].uid;
@@ -382,7 +407,6 @@ const setCardBoard = (zone, query, mp) => {
         }
         else if (query == ".opponent-board") {
             if(zone[card].mechanics.includes("Stealth")) {
-                // cardNode.style.backgroundImage = "url('./image/icons/back.png')";
                 cardNode.style.opacity = "0.5"
             }
             else {
@@ -437,9 +461,6 @@ const setInfo = (opponent, playerClass) => {
 }
 
 const setOpponentInfo = (infos) => {
-   
-    
-  
     let handNode = document.querySelector(".opponent-hand");
     handNode.innerHTML = "";
 
@@ -462,9 +483,6 @@ const setOpponentInfo = (infos) => {
     deckNode.append(infos["remainingCardsCount"]);
     heroMpNode.append(infos["mp"]);
 }
-
-
-
 
 const setTemps = (time) => {
     let tempsNode = document.querySelector(".time-node");

@@ -24,7 +24,6 @@ h2 {
     color: #ff6699;  
 }
 
-
 .action-box {
     display: flex;
     justify-content: center;
@@ -46,15 +45,14 @@ h2 {
     color: white;
 }
 
-
 .chat-container {
-    flex-basis: 700px; /* Give a fixed width to the chat container */
-    z-index: 5; /* Ensure it's above the other content if needed */
-    margin: 0 20px; /* Add some margin to separate it from the canvases */
+    flex-basis: 700px; 
+    z-index: 5; 
+    margin: 0 20px; 
 }
 
 .chat-box {
-    border: 3px solid #ff91a4; /* Pinkish Border */
+    border: 3px solid #ff91a4; 
     border-radius: 10px;
     overflow: hidden; 
 }
@@ -68,22 +66,21 @@ iframe {
 .content-container {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Ensure children stretch to fill the container height */
+    align-items: stretch; 
 }
 .main-content {
-    flex-grow: 1; /* Allow main content to grow and take available space */
+    flex-grow: 1; 
 }
 .canvas-container {
-    flex: 1; /* Each canvas container will take up an equal amount of space */
-    display: flex; /* You can use this to center the canvas vertically if needed */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 .full-canvas {
-    max-width: 100%; /* Ensure the canvas is not overflowing its container */
-    height: auto; /* Keep the aspect ratio */
+    max-width: 100%; 
+    height: auto; 
 }
-
 
 .action-href, .action-button {
     padding: 12px 30px;
@@ -102,25 +99,22 @@ iframe {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  
 }
 
-
 .quit-button {
-    position: absolute; /* Already positioned absolutely */
+    position: absolute; 
     top: 20px;
     right: 20px;
     background-color: #ff3333;
-    z-index: 10; /* Any positive value here will ensure it's above #kittyheart */
+    z-index: 10; 
 }
-
 
 .quit-button:hover {
     background-color: #e60000;  
 }
 
-
 #kittyheart {
     position: fixed;
     top: 50%;
-    right: 20px; /* Adjust the distance from the right edge as needed */
+    right: 20px; 
     transform: translateY(-50%);
     background-color: #ff3333;
     z-index: 10;

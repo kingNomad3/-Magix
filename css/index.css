@@ -1,4 +1,3 @@
-/* global.css */
 body {
     font-family: Arial, sans-serif;
     background-color: #FFD1D9;
@@ -17,8 +16,6 @@ h1 {
     margin-bottom: 2rem;
     color: #FF69B4; 
 }
-
-
 
 .form-label,
 .form-input {
@@ -67,7 +64,6 @@ button {
 button:hover {
     background-color: #FF1493;
 }
-
 
 .canvas-container {
     position: relative; 

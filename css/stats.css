@@ -18,7 +18,7 @@
         }
 
         .favorites-container {
-            background-image: url('hello_kitty.jpg'); /* Replace with the actual image URL */
+            background-image: url('hello_kitty.jpg');
             background-size: cover;
             width: 300px;
             height: 300px;

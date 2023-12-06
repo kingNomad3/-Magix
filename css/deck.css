@@ -2,9 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* overflow: hidden;  */
 }
-
 
 a {
     color: #FF69B4; 
@@ -19,16 +17,6 @@ a:hover {
     background-color: #FF69B4;
     color: white;
 }
-
-/* .deck-div {
-    background-image: url('path_to_your_hello_kitty_background_image.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0px 0px 15px #FF69B4; 
-} */
 
 h1 {
     color: #FF69B4;
@@ -69,7 +57,6 @@ iframe {
     color: #FFF;
     border: 2px solid #FFD1D9; 
 }
-
 
 .deck-title {
     position: fixed;

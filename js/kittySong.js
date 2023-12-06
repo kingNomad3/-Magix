@@ -1,1 +1,0 @@
-// hello kitty by avril lavigne

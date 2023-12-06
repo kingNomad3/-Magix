@@ -1,7 +1,11 @@
 <?php
-    require_once("action/AjaxDataAction.php");
+    require_once("action/StatsAction.php");
+  
 
-    $action = new AjaxDataAction();
+
+    $action = new StatsAction();
     $data = $action->execute();
 
-    echo json_encode($data["result"]);
+   
+    var_dump($data["parjoueur"]);
+    echo json_encode($data["parjoueur"]);

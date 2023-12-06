@@ -9,7 +9,17 @@
         }
 
         protected function executeAction() {
+            $parjoueur = "";
+            $getcards = "";
+
+            if(!empty($_POST["parjoueur"])){
+                $parjoueur = PopulariteDAO::carteParJoeur();
+            }
+
+            if(!empty($_POST["getcards"])){
+                $getcards = PopulariteDAO::getCards();
+            }
             
-           return [];
+           return compact("getcards","parjoueur");
         }
-    }
+    }             

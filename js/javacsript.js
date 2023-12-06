@@ -5,7 +5,7 @@ const applyStyles = iframe => {
 		fontGoogleName : "Sofia",
 		fontSize : "20px",
 		hideIcons : false ,
-		inputBackgroundColor : "red",
+		inputBackgroundColor : "pink",
 		inputFontColor : "blue",
 		height : "700px",
 		memberListFontColor : "#ff00dd",
@@ -24,8 +24,6 @@ const carte = () =>{
 
 	node.push
 	
-	
-
 }
 
 
@@ -57,60 +55,6 @@ const chooseGame = (type, callType) => {
 	})
 }
 
-
-// window.addEventListener("load", () => {
-//     fetch("ajax-data.php")
-//     .then(response => response.json())
-//     .then(data => {
-//         updateCards(data);
-//     })
-// })
-
-// let clear_data = document.querySelector(".clear-data");
-// let without_players = document.querySelector(".without-players");
-// let with_players = document.querySelector(".with-players");
-
-// with_players.onclick = () => {
-//     let formData = new FormData();
-//     formData.append("player", "player");
-
-//     fetch("ajax-data.php", {
-//         method: "post",
-//         body: formData
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         updateCards(data);
-//     })
-// }
-
-// without_players.onclick = () => {
-//     let formData = new FormData();
-//     formData.append("without", "without");
-
-//     fetch("ajax-data.php", {
-//         method: "post",
-//         body: formData
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         updateCards(data);
-//     })
-// }
-
-// clear_data.onclick = () => {
-//     let formData = new FormData();
-//     formData.append("clear", "clear");
-
-//     fetch("ajax-data.php", {
-//         method: "post",
-//         body: formData
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         updateCards(data);
-//     })
-// }
 
 const updateCards = (data) => {
     let parent = document.querySelector(".favorites-container");
@@ -175,7 +119,6 @@ const updateCards = (data) => {
 
     parent.append(table);
 }
-
 
 
 var localUsername = localStorage.getItem("local_username");

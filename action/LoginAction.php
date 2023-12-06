@@ -20,12 +20,12 @@
 
                 if ($result == "INVALID_USERNAME_PASSWORD") {
                     // err 
-                    print("error");
+                    print("BAD KITTY");
                     $hasConnectionError = true;
                     // var_dump($result);exit;
                 }
                 else {
-                    //pour ce connecter
+                   
                     $key = $result->key;
                     $_SESSION["key"] = $key;
                     $_SESSION["username"] = $_POST["username"];

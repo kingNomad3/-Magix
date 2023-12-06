@@ -4,7 +4,6 @@
     $action = new LobbyAction();
     $data = $action->execute();
 
-    $pageName = "lobby.php";
 
     require_once("partial/header.php");
 ?>

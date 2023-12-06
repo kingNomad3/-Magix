@@ -4,7 +4,6 @@
     $action = new DeckAction();
     $data = $action->execute();
 
-    $pageName = "deck.php";
 
     require_once("partial/header.php");
 ?>

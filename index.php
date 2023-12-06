@@ -3,11 +3,11 @@
 
     $action = new LoginAction();
     $data = $action->execute();
-    $pageName = "index.php";
+
+    // phpinfo();
 
     require_once("partial/header.php");
 ?> 
-
 
 <h1>WELCOME TO Hello kitty world </h1>
 <link rel="stylesheet" href="css/index.css">
@@ -43,9 +43,6 @@
     <div class="form-label">&nbsp;</div>
     <div class="form-input">
         <button type="submit">Connexion</button>
-   
-
-
 <?php
     require_once("partial/footer.php");
 ?>

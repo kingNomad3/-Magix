@@ -23,8 +23,6 @@ window.addEventListener("load", () => {
 	tick();
 });
 
-
-
 const getX = percent => {
 	return percent/100.0 * canvasWidth;
 }
@@ -45,7 +43,6 @@ const tick = () => {
 			i--;
 		}
 	}
-
 	window.requestAnimationFrame(tick);
 }
 

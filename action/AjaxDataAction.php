@@ -9,16 +9,13 @@
         }
 
         protected function executeAction() {
-            if(isset($_POST["id_carte"]) && isset($_POST["joueur"]))
-                PopularityDAO::addCardDB($_POST["id_carte"], $_POST["joueur"]);
+            $id = $_POST["id_carte"];
+            $joueur = $_POST["joueur"];
 
-           
-            
-            if(isset($_POST["joueur"])) {
-                $result = PopularityDAO::carteParJoeur();
-            } 
+            PopulariteDAO::addCardDB($id,$joueur);
 
+         
 
-            return compact("result");
+            return [];
         }
     }
