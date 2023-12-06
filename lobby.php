@@ -3,7 +3,6 @@
 
     $action = new LobbyAction();
     $data = $action->execute();
-    // $pageName = "lobby.php";
 
     require_once("partial/header.php");
 ?>
@@ -14,26 +13,24 @@
     <script src="js/global.js"></script>
     <script src="js/javacsript.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/sprites/kitty2.js"></script>
+    <script src="js/sprites/heartkitty.js"></script>
     <script src="js/TiledImage.js"></script>
 </div>
 
-<h4>WELCOME, LITTLE KITTEN</h4>
-<h1>hey, <?=  $_SESSION["username"] ?> this is where you can talk to other kitties</h1>
+<h4>MOWELCOME, WITTLE KITTEN</h4>
+<h1 >hey, <span id="username-placeholder"><?= $_SESSION["username"] ?></span> this is where you can talk to other kitties</h1>
 
 <div class="action-box">
-    <a class="action-href" href="deck.php" class="deck-button">DECK</a>
+    <a class="action-href" href="deck.php" class="deck-button">MOWECK</a>
     <button class="action-button" onclick="chooseGame('TRAINING', 'games/auto-match')">
-        PRACTICE
+        MOWTICE
     </button>
     <button class="action-button" onclick="chooseGame('PVP', 'games/auto-match')">
-        PLAY
+        MOWLAY
     </button>
-    <a class="action-href" href="logout.php" class="quit-button">LEAVE</a>
+    <a class="action-href" href="stats.php" class="deck-button">MAOWCHIVE</a>
+    <a class="action-href" href="logout.php" class="quit-button">MOWEAVE</a>
 </div>
-
-
-
 
 <div class="content-container">
     <div class="canvas-container">

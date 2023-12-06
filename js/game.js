@@ -25,14 +25,19 @@ const state = () => {
     console.log(data)
     switch(data) {
         case "WAITING":
-            messageErreur("la partie n'a pas encore commencé");
+            messageErreur("La Wartie n'a Was encore MAOWommencé");
             break;
         case "LAST_GAME_WON":
-            messageErreur("Vous avez gagner");
+            messageErreur("MOWTORY");
+            setTimeout(() => {
+                location.href = "lobby.php";
+            }, 5000);
             break;
         case "LAST_GAME_LOST":
-            messageErreur("Vous avez perdu");
-               // location.href = "lobby.php";
+            messageErreur("MOWSER KITTEN");
+            setTimeout(() => {
+                location.href = "lobby.php";
+            }, 5000);
             break;
         default:
             setCardBoard(data.board, ".player-board");
@@ -72,6 +77,28 @@ const updateState = (data) => {
     }
 }
     
+const applyStyles = iframe => {
+	let styles = {
+		fontColor : "#333",
+		backgroundColor : "rgba(87, 41, 5, 0.2)",
+		fontGoogleName : "Sofia",
+		fontSize : "20px",
+		hideIcons : false ,
+		inputBackgroundColor : "red",
+		inputFontColor : "blue",
+		height : "700px",
+		padding: "5px",
+		memberListFontColor : "#ff00dd",
+		borderColor : "blue",
+		memberListBackgroundColor : "white",
+		hideScrollBar: true, // pour cacher le scroll bar
+	}
+	
+	setTimeout(() => {
+		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
+}, 100);
+}
+
 
 const action = (type, callType) => {
 	let formData = new FormData();
@@ -112,6 +139,7 @@ const actionCarte = (type,user) => {
     switch(data) {
         case "INVALID_KEY":
         case "INVALID_ACTION":
+            displayImage("images/DeckCards/carte2.png", "Invalid Action");
         case "ACTION_IS_NOT_AN_OBJECT":
         case "NOT_ENOUGH_ENERGY":
         case "BOARD_IS_FULL":
@@ -132,7 +160,25 @@ const actionCarte = (type,user) => {
 })
 }
 
+function displayImage(imageSrc, altText) {
+    
+    var modal = document.createElement("div");
+    modal.className = "modal";
+    document.body.appendChild(modal);
 
+   
+    var imgElement = document.createElement("img");
+    imgElement.src = imageSrc;
+    imgElement.alt = altText;
+
+   
+    modal.appendChild(imgElement);
+
+   
+    setTimeout(function() {
+        modal.parentNode.removeChild(modal);
+    }, 1000); 
+}
 const showLatestAction = (actions) => {
     let node = document.getElementsByClassName("latestAction")[0];
 
@@ -157,10 +203,10 @@ const showLatestAction = (actions) => {
 }
 
 
-const addCardDB = (id_card, player) => {
+const addCardDB = (id_card, joueur) => {
     let formData = new FormData();
     formData.append("id_card", id_card);
-    formData.append("player", player);
+    formData.append("joueur", joueur);
 
     fetch("ajax-data.php", {
         method: "post",
@@ -171,16 +217,7 @@ const addCardDB = (id_card, player) => {
 
 
 
-// const addCardDB = (id_card, player) => {
-//     let formData = new FormData();
-//     formData.append("id_card", id_card);
-//     formData.append("player", player);
 
-//     fetch("ajax-data.php", {
-//         method: "post",
-//         body: formData
-//     })
-// }
 
 const messageErreur = (message) => {
     let node = document.getElementsByClassName("errorMessage")[0];

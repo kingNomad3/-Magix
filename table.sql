@@ -1,5 +1,11 @@
-CREATE TABLE stack_answers (
-	id serial PRIMARY KEY,
-	author VARCHAR(40) NOT NULL,
-	answer VARCHAR(2000) NOT NULL
+DROP TABLE IF EXISTS populaire;
+
+-- DELETE FROM populaire;
+
+CREATE TABLE populaire (
+    id serial PRIMARY KEY,
+    id_carte INTEGER NOT NULL,
+    joueur VARCHAR(20) NOT NULL
 );
+
+SELECT * FROM populaire;

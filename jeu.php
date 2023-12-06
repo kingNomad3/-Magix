@@ -4,13 +4,11 @@
     $action = new jeuAction();
     $data = $action->execute();
 
-    $pageName = "jeu.php";
 
     require_once("partial/header.php");
 ?>
 <link rel="stylesheet" href="css/game.css">
 <script defer src="js/game.js"></script>
-<!-- <link rel="stylesheet" href="css/index.css"> -->
 
 
 <div class="errorMessage"></div>
@@ -20,15 +18,13 @@
                 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>"> 
         </iframe>
 </div>
-
-
+<div id=img></div>
 
 <div onclick="toggleChat()" class="toggle-chat">chat-box</div>
 <div onclick="toggleActions()" class="toggle-action">Actions</div>
 
 <div class="latestAction">
 </div>
-
 
 
 <div id="opponent-side">
